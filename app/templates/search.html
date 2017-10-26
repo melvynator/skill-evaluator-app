@@ -1,0 +1,49 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}" />
+
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-5">
+        <h1>What's hype?</h1>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form action="{{ url_for('search.job_search_processing') }}" method="post">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-usd"></i></span>
+                <input type="text"  name="techno" required="required" class="form-control">
+
+                <!-- insert this line -->
+                <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+                <select name="interval" class="form-control">
+                    <option value="1M">Month  </option>
+                    <option value="183d">Semester  </option>
+                    <option value="1y">Year  </option>
+                </select>
+                {{ form.csrf_token }}
+            </div>
+        </form>
+        <form action="{{ url_for('search.popularity_search_processing') }}" method="post">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                <input type="text"  name="tag" required="required" class="form-control">
+
+                {{ form.csrf_token }}
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
